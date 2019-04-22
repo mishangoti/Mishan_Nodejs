@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title= title
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
+  body
+    div(class="container")
+      div(class="row")
+        div(class="col-sm-6 col-sm-offset-3")
+          //- <% if(message.length > 0) { %>
+          //-   div(class="alert alert-danger") <%= message %> 
+          //- <% } %>
+          //- <div class="alert flash">
+          //-   <button type="button" class="close">×</button>
+          //-   <i class="fa sign"></i><strong>{{type}}</strong> 
+          //-   <span>{{message}}</span>
+          //- </div>
+          //- div(class="alert flash alert-#{fail_type}")
+          //-   i(class="fa sign")
+          //-   span #{fail_message}
+          ul.errors
+            if errors
+              each error, i in errors
+                li.alert.alert-danger #{error.msg}
+          form(action="/users/register" method="POST")
+            div(class="form-group")
+              label(for="username") Name
+              input(type="text" class="form-control" id="username" name="username" /*value="#{username}"*/ placeholder="Name")
+            div(class="form-group")
+              label(for="email") Email address
+              input(type="email" class="form-control" id="email" name="email" /*value="#{email}"*/ placeholder="Email")
+            div(class="form-group")
+              label(for="password") Password
+              input(type="password" class="form-control" id="password" name="password" /*value="#{password}"*/ placeholder="Password")
+            div(class="form-group")
+              label(for="password2") Password
+              input(type="password" class="form-control" id="password2" name="password2" /*value="#{password2}"*/ placeholder="Password2")
+            button(type="submit" class="btn btn-success") Submit
